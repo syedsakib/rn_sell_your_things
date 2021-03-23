@@ -7,12 +7,12 @@ function AppButton({ title, onPress, color = "primary" }) {
   return (
     <TouchableOpacity
       style={[styles.button, { backgroundColor: colors[color] }]}
-      onPress={() => console.log("hello")}
+      onPress={onPress}
     >
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
-  ); 
-} 
+  );
+}
 
 const styles = StyleSheet.create({
   button: {
