@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import {
   View,
-  Button,
-  TextInput,
   StyleSheet,
-  Modal,
   TouchableWithoutFeedback,
+  Modal,
+  Button,
   FlatList,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import Screen from "./Screen";
+import defaultStyles from "../config/styles";
 import PickerItem from "./PickerItem";
 
-function AppPicker({ icon, placeholder, items, selectedItem, onSelectItem }) {
+function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
   const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
@@ -29,9 +29,12 @@ function AppPicker({ icon, placeholder, items, selectedItem, onSelectItem }) {
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>
-            {selectedItem ? selectedItem.label : placeholder}
-          </AppText>
+          {selectedItem ? (
+            <AppText style={styles.text}>{selectedItem.label}</AppText>
+          ) : (
+            <AppText style={styles.placeholder}>{placeholder}</AppText>
+          )}
+
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -41,7 +44,7 @@ function AppPicker({ icon, placeholder, items, selectedItem, onSelectItem }) {
       </TouchableWithoutFeedback>
       <Modal visible={modalVisible} animationType="slide">
         <Screen>
-          <Button title="close" onPress={() => setModalVisible(false)} />
+          <Button title="Close" onPress={() => setModalVisible(false)} />
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
@@ -63,16 +66,19 @@ function AppPicker({ icon, placeholder, items, selectedItem, onSelectItem }) {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: defaultStyles.colors.light,
+    borderRadius: 25,
     flexDirection: "row",
     width: "100%",
     padding: 15,
-    backgroundColor: defaultStyles.colors.light,
-    borderRadius: 25,
     marginVertical: 10,
   },
   icon: {
     marginRight: 10,
-    paddingTop: 5,
+  },
+  placeholder: {
+    color: defaultStyles.colors.medium,
+    flex: 1,
   },
   text: {
     flex: 1,
