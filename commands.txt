@@ -1,6 +1,5 @@
 
-Card.js
-
+//Card.js
 <View style={{ backgroundColor: "#f8f4f4", padding: 20, paddingTop: 100 }}>
 <Card
   title="Red jacket for sale"
@@ -8,3 +7,23 @@ Card.js
   image={require("./app/assets/jacket.jpg")}
 />
 </View>
+
+
+//AppPicker
+const categories = [
+  { label: "Furniture", value: 1 },
+  { label: "Clothings", value: 2 },
+  { label: "Cameras", value: 3 },
+];
+const [category, setCategory] = useState();
+
+<Screen>
+      <AppPicker
+        icon="apps"
+        placeholder="Category"
+        items={categories}
+        selectedItem={category}
+        onSelectItem={(item) => setCategory(item)}
+      />
+      <ApptextInput icon="email" placeholder="Email" />
+</Screen>
