@@ -9,7 +9,7 @@ function Icon({
   iconColor = "#fff",
 }) {
   return (
-    <View
+    <View 
       style={{
         width: size,
         height: size,

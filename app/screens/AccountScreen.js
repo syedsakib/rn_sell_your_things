@@ -14,7 +14,7 @@ const menuItems = [
       backgroundColor: colors.primary,
     },
   },
-  {
+  { 
     title: "My Messages",
     icon: {
       name: "email",

@@ -27,3 +27,19 @@ const [category, setCategory] = useState();
       />
       <ApptextInput icon="email" placeholder="Email" />
 </Screen>
+
+
+
+
+//Card 2
+ <Screen
+      style={{
+        paddingTop: 10,
+        paddingLeft: 5,
+        paddingRight: 5,
+
+        backgroundColor: colors.light,
+      }}
+>
+      <Card2 />
+</Screen>
